@@ -31,7 +31,7 @@
 
             var url = 'https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161';
 
-            console.log("init 13");
+            console.log("init 14");
 
             if (typeof web3 !== 'undefined') {
                 // Mist/MetaMask의 프로바이더 사용
@@ -49,6 +49,13 @@
                     try {
 
                         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        if(window.ethereum.isConnected()){
+                            console.log("test()");
+
+                            let x = document.getElementsByClassName("button button--ghost")[0];
+                            x.innerText="disConnect";
+                        }
+                        
                         console.log( "D ethereum.isConnected() = "+window.ethereum.isConnected() );
                         //repet();
 
@@ -68,13 +75,14 @@
                 }
 
             }
-            
+
             function test(){
+
                 console.log("test()");
 
                 let x = document.getElementsByClassName("button button--ghost")[0];
                 x.innerText="disConnect";
-                
+
             }
 
         </script>
@@ -108,8 +116,7 @@
                         </li>
 
                         <a href="#" class="button button--ghost" onclick="test()">Connect</a>
-<!--                         <a href="#" class="button button--ghost">Connect</a> -->
-                        
+
                     </ul>
 
                     <div class="nav__close" id="nav-close">
