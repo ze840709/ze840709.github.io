@@ -31,7 +31,7 @@
 
             var url = 'https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161';
 
-            console.log("init 15");
+            console.log("init 16");
 
             if (typeof web3 !== 'undefined') {
                 // Mist/MetaMask의 프로바이더 사용
@@ -50,10 +50,9 @@
 
                         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                         if(window.ethereum.isConnected()){
-                            console.log("test()");
 
                             let x = document.getElementsByClassName("button button--ghost")[0];
-                            x.innerText="disConnect";
+                            x.innerText=accounts;
                         }
                         
                         console.log( "D ethereum.isConnected() = "+window.ethereum.isConnected() );
