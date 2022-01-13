@@ -44,8 +44,9 @@
                 web3 = new Web3(new Web3.providers.HttpProvider(url));
                 console.log("Failure.");
             }
+
             console.log( "B ethereum.isConnected() = "+ethereum.isConnected() );
-            
+
             async function chainConnect(){
 
                 if (window.ethereum) {
