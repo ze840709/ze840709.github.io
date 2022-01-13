@@ -30,8 +30,10 @@
         <script type="text/javascript">
 
             var url = 'https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161';
+            var userAddress;
+            var saveAddress;
 
-            console.log("init 16");
+            console.log("init 20");
 
             if (typeof web3 !== 'undefined') {
                 // Mist/MetaMask의 프로바이더 사용
@@ -45,19 +47,20 @@
             async function chainConnect(){
 
                 if (window.ethereum) {
-
                     try {
 
-                        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                        if(window.ethereum.isConnected()){
+                        if(!window.ethereum.isConnected()){
 
-                            let x = document.getElementsByClassName("button button--ghost")[0];
-                            x.innerText=accounts;
+                            userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+                            if(window.ethereum.isConnected()){
+
+                                repet();
+
+                            }
+
                         }
                         
-                        console.log( "D ethereum.isConnected() = "+window.ethereum.isConnected() );
-                        //repet();
-
                     } catch (error) {
 
                         if (error.code === 4001) {
@@ -65,8 +68,8 @@
                         }
 
                         console.log("error code = "+error);
-                    }
 
+                    }
                 }
                 // Non-dapp browsers...
                 else {
@@ -74,13 +77,22 @@
                 }
 
             }
+            
+            async function repet(){
 
-            function test(){
-
-                console.log("test()");
-
-                let x = document.getElementsByClassName("button button--ghost")[0];
-                x.innerText="disConnect";
+                let checkAccountChange = setInterval(async function() {
+                    // 계정이 바뀌었는지 확인
+                //            let currentAccount = await web3.eth.getAccounts().then(function(array) { return array[0] });
+                    userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    // 현재 유저가 들고있는 계정(currentAccount)가 브라우저가 인식하는 계정(userAccount)와 다르다면
+                    if (saveAddress !== userAddress) {
+                        // 계정을 업데이트 해준다
+                        saveAddress = userAddress;
+                        // 새 계정에 대한 UI로 업데이트하기 위한 함수 호출 및 메시지 알림
+                        let x = document.getElementsByClassName("button button--ghost")[0];
+                        x.innerText=accounts;
+                    }
+                }, 1000);     // 1초 마다 계정 확인
 
             }
 
@@ -96,7 +108,7 @@
             <nav class="nav container">
                 <a href="#" class="nav__logo">ZENSTY</a>
                 <div class="nav__menu" id="nav-menu">
-                    
+
                     <ul class="nav__list">
                         <li class="nav__item">
                             <a href="#about" class="nav__link active-link">About</a>
