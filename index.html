@@ -32,7 +32,7 @@
             var url = 'https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161';
 
             console.log("init 1");
-            console.log( "C ethereum.isConnected() = "+window.ethereum.isConnected() );
+            console.log( "A ethereum.isConnected() = "+ethereum.isConnected() );
 
             if (typeof web3 !== 'undefined') {
                 // Mist/MetaMask의 프로바이더 사용
@@ -44,7 +44,7 @@
                 web3 = new Web3(new Web3.providers.HttpProvider(url));
                 console.log("Failure.");
             }
-            console.log( "D ethereum.isConnected() = "+window.ethereum.isConnected() );
+            console.log( "B ethereum.isConnected() = "+ethereum.isConnected() );
             
             async function chainConnect(){
 
@@ -52,9 +52,9 @@
 
                     try {
 
-                        console.log( "A ethereum.isConnected() = "+window.ethereum.isConnected() );
+                        console.log( "C ethereum.isConnected() = "+ethereum.isConnected() );
                         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                        console.log( "B ethereum.isConnected() = "+window.ethereum.isConnected() );
+                        console.log( "D ethereum.isConnected() = "+ethereum.isConnected() );
                         //repet();
 
                     } catch (error) {
