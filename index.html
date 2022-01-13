@@ -33,7 +33,7 @@
             var userAddress;
             var saveAddress;
 
-            console.log("init 21");
+            console.log("init 22");
 
             if (typeof web3 !== 'undefined') {
                 // Mist/MetaMask의 프로바이더 사용
@@ -51,7 +51,8 @@
 
                         if(!window.ethereum.isConnected()){
 
-                            userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                            console.log("window.ethereum");
+                            const userAddress1 = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
 //                             if(window.ethereum.isConnected()){
 
