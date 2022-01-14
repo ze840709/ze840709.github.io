@@ -34,7 +34,7 @@
             var saveAddress;
             var copyAddress = '...';
 
-            console.log("init 67");
+            console.log("init 70");
 
             initWeb3();
 
@@ -61,9 +61,7 @@
 
                         try {
 
-                            userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                            let x = document.getElementsByClassName("button button--ghost")[0];
-                            x.innerText = String(userAddress).substr(0, 6)+copyAddress;
+                            
 
                             repet();
 
@@ -92,15 +90,13 @@
 
                 let checkAccountChange = setInterval(async function() {
 
-                    let x = document.getElementsByClassName("button button--ghost")[0];
-                    userAddress = x.innerText;
-                    
-                    console.log("saveAddress");
+                    userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
                     if (saveAddress !== userAddress) {
 
                         saveAddress = userAddress;
 
+                        let x = document.getElementsByClassName("button button--ghost")[0];
                         x.innerText = String(userAddress).substr(0, 6)+copyAddress;
 
                         console.log("userAddress = "+userAddress);
