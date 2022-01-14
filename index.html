@@ -33,7 +33,7 @@
             var userAddress;
             var saveAddress;
 
-            console.log("init 50");
+            console.log("init 52");
 
             initWeb3();
 
@@ -51,13 +51,9 @@
             }
 
             async function chainConnect(){
-                if (window.ethereum) {
-                    userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    let x = document.getElementsByClassName("button button--ghost")[0];
-                    x.innerText = userAddress;
-                    repet();
-                    
-                    
+
+                if (window.ethereum) {                    
+
                     try {
 
                         userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -65,7 +61,7 @@
                         x.innerText = userAddress;
 
                         repet();
-                        
+
                     } catch (error) {
 
                         if (error.code === 4001) {
@@ -75,8 +71,7 @@
                         console.log("error code = "+error);
 
                     }
-                    
-                    
+
                 }
                 // Non-dapp browsers...
                 else {
@@ -125,11 +120,11 @@
                 let checkAccountChange = setInterval(async function() {
 
                     if (saveAddress !== userAddress) {
-                        userAddress = saveAddress;
+                        saveAddress = userAddress;
 
                         let x = document.getElementsByClassName("button button--ghost")[0];
                         x.innerText = userAddress;
-                        
+
                         console.log("userAddress = "+userAddress);
                         console.log("saveAddress = "+saveAddress);
                     }
