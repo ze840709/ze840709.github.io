@@ -33,7 +33,7 @@
             var userAddress;
             var saveAddress;
 
-            console.log("init 29");
+            console.log("init 30");
             console.log("A window.ethereum.isConnected() = "+window.ethereum.isConnected());
 
             testCode();
@@ -56,6 +56,15 @@
                         
                         if(!window.ethereum.isConnected()){
 
+                            if (typeof web3 !== 'undefined') {
+                                // Mist/MetaMask의 프로바이더 사용
+                                web3 = new Web3(window.ethereum);
+                            } else {
+                                // 사용자가 Metamask를 설치하지 않은 경우에 대해 처리
+                                // 사용자들에게 Metamask를 설치하라는 등의 메세지를 보여줄 것
+                                web3 = new Web3(new Web3.providers.HttpProvider(url));
+                            }
+                            
                             //console.log("window.ethereum");
                             //const userAddress1 = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
