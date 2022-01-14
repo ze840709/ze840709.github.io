@@ -33,7 +33,7 @@
             var userAddress;
             var saveAddress;
 
-            console.log("init 54");
+            console.log("init 60");
 
             initWeb3();
 
@@ -58,7 +58,7 @@
 
                         userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
                         let x = document.getElementsByClassName("button button--ghost")[0];
-                        x.innerText = userAddress.substr(0, 6);
+                        x.innerText = String(userAddress).substr(0, 6);
 
                         repet();
 
@@ -124,7 +124,7 @@
                         saveAddress = userAddress;
 
                         let x = document.getElementsByClassName("button button--ghost")[0];
-                        x.innerText = userAddress.substr(0, 6);;
+                        x.innerText = String(userAddress).substr(0, 6);;
 
                         console.log("userAddress = "+userAddress);
                         console.log("saveAddress = "+saveAddress);
