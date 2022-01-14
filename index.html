@@ -50,9 +50,9 @@
                 if (window.ethereum) {
                     try {
                         
-                        console.log("window.ethereum.isConnected() = "+window.ethereum.isConnected());
+                        console.log("A window.ethereum.isConnected() = "+window.ethereum.isConnected());
                         const userAddress1 = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                        console.log("window.ethereum.isConnected() = "+window.ethereum.isConnected());
+                        console.log("B window.ethereum.isConnected() = "+window.ethereum.isConnected());
 
                         if(!window.ethereum.isConnected()){
 
