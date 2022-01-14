@@ -34,7 +34,7 @@
             var saveAddress;
             var copyAddress = '...';
 
-            console.log("init 64");
+            console.log("init 66");
 
             initWeb3();
 
@@ -93,6 +93,7 @@
                 let checkAccountChange = setInterval(async function() {
 
                     let x = document.getElementsByClassName("button button--ghost")[0];
+                    userAddress = x.innerText;
 
                     if (saveAddress !== userAddress) {
 
