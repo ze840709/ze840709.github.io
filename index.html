@@ -58,7 +58,7 @@
 
                         userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
                         let x = document.getElementsByClassName("button button--ghost")[0];
-                        x.innerText = userAddress;
+                        x.innerText = userAddress.substr(0, 6);
 
                         repet();
 
@@ -120,11 +120,11 @@
                 let checkAccountChange = setInterval(async function() {
 
                     if (saveAddress !== userAddress) {
-                        
+
                         saveAddress = userAddress;
 
                         let x = document.getElementsByClassName("button button--ghost")[0];
-                        x.innerText = userAddress;
+                        x.innerText = userAddress.substr(0, 6);;
 
                         console.log("userAddress = "+userAddress);
                         console.log("saveAddress = "+saveAddress);
