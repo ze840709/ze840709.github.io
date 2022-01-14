@@ -36,6 +36,8 @@
             console.log("init 27");
             console.log("O window.ethereum.isConnected() = "+window.ethereum.isConnected());
 
+            testCode();
+            
             if (typeof web3 !== 'undefined') {
                 // Mist/MetaMask의 프로바이더 사용
                 web3 = new Web3(window.ethereum);
@@ -83,6 +85,15 @@
                 }
 
             }
+            
+            async function testCode(){
+
+                let checkAccountChange = setInterval(async function() {
+                    console.log("B window.ethereum.isConnected() = "+window.ethereum.isConnected());
+                }, 1000);     // 1초 마다 계정 확인
+
+            }
+            
 
             async function repet(){
 
