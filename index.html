@@ -34,7 +34,7 @@
             var saveAddress;
             var copyAddress = '...';
 
-            console.log("init 70");
+            console.log("init 72");
 
             initWeb3();
 
@@ -61,7 +61,7 @@
 
                         try {
 
-                            
+                            userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
                             repet();
 
