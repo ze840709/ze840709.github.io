@@ -33,8 +33,8 @@
             var userAddress;
             var saveAddress;
 
-            console.log("init 27");
-            console.log("O window.ethereum.isConnected() = "+window.ethereum.isConnected());
+            console.log("init 28");
+            console.log("A window.ethereum.isConnected() = "+window.ethereum.isConnected());
 
             testCode();
             
@@ -52,10 +52,8 @@
                 if (window.ethereum) {
                     try {
                         
-                        console.log("A window.ethereum.isConnected() = "+window.ethereum.isConnected());
                         const userAddress1 = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                        console.log("B window.ethereum.isConnected() = "+window.ethereum.isConnected());
-
+                        
                         if(!window.ethereum.isConnected()){
 
                             //console.log("window.ethereum");
