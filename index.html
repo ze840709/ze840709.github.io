@@ -33,7 +33,7 @@
             var userAddress;
             var saveAddress;
 
-            console.log("init 52");
+            console.log("init 54");
 
             initWeb3();
 
@@ -52,7 +52,7 @@
 
             async function chainConnect(){
 
-                if (window.ethereum) {                    
+                if (window.ethereum) {
 
                     try {
 
@@ -120,6 +120,7 @@
                 let checkAccountChange = setInterval(async function() {
 
                     if (saveAddress !== userAddress) {
+                        
                         saveAddress = userAddress;
 
                         let x = document.getElementsByClassName("button button--ghost")[0];
@@ -127,6 +128,7 @@
 
                         console.log("userAddress = "+userAddress);
                         console.log("saveAddress = "+saveAddress);
+
                     }
 
                 }, 1000);
