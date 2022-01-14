@@ -32,8 +32,9 @@
             var url = 'https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161';
             var userAddress;
             var saveAddress;
+            var copyAddress = '...';
 
-            console.log("init 60");
+            console.log("init 61");
 
             initWeb3();
 
@@ -58,7 +59,7 @@
 
                         userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
                         let x = document.getElementsByClassName("button button--ghost")[0];
-                        x.innerText = String(userAddress).substr(0, 6);
+                        x.innerText = String(userAddress).substr(0, 6)+copyAddress;
 
                         repet();
 
@@ -124,7 +125,7 @@
                         saveAddress = userAddress;
 
                         let x = document.getElementsByClassName("button button--ghost")[0];
-                        x.innerText = String(userAddress).substr(0, 6);;
+                        x.innerText = String(userAddress).substr(0, 6)+copyAddress;
 
                         console.log("userAddress = "+userAddress);
                         console.log("saveAddress = "+saveAddress);
