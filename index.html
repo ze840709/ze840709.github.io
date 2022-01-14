@@ -33,20 +33,20 @@
             var userAddress;
             var saveAddress;
 
-            console.log("init 40");
+            console.log("init 42");
             console.log("A window.ethereum.isConnected() = "+window.ethereum.isConnected());
 
-            testCode();
             initWeb3();
-            
-            
+
             function initWeb3(){
                 if (typeof web3 !== 'undefined') {
                     // Mist/MetaMask의 프로바이더 사용
+                    console.log("C window.ethereum.isConnected() = "+window.ethereum.isConnected());
                     web3 = new Web3(window.ethereum);
                 } else {
                     // 사용자가 Metamask를 설치하지 않은 경우에 대해 처리
                     // 사용자들에게 Metamask를 설치하라는 등의 메세지를 보여줄 것
+                    console.log("D window.ethereum.isConnected() = "+window.ethereum.isConnected());
                     web3 = new Web3(new Web3.providers.HttpProvider(url));
                 }
             }
@@ -55,18 +55,22 @@
 
                 if (window.ethereum) {
                     try {
-                        
+
+                        console.log("B window.ethereum.isConnected() = "+window.ethereum.isConnected());
+
                         if(!window.ethereum.isConnected()){
                            initWeb3();
                         }
 
                         else
                         {
+                            console.log("F window.ethereum.isConnected() = "+window.ethereum.isConnected());
+                            
                             userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
                             let x = document.getElementsByClassName("button button--ghost")[0];
-                            x.innerText=userAddress;
-                            
-                            //repet();
+                            x.innerText = userAddress;
+
+                            repet();
                         }
 
                     } catch (error) {
@@ -86,37 +90,18 @@
 
             }
 
-            async function testCode(){
-
-                let checkAccountChange = setInterval(async function() {
-                    console.log("B window.ethereum.isConnected() = "+window.ethereum.isConnected());
-                }, 1000);     // 1초 마다 계정 확인
-
-            }
-            
-
             async function repet(){
 
                 let checkAccountChange = setInterval(async function() {
-                    
+
                     if (saveAddress !== userAddress) {
                         userAddress = saveAddress;
+
+                        let x = document.getElementsByClassName("button button--ghost")[0];
+                        x.innerText = userAddress;
                     }
 
-                    // 계정이 바뀌었는지 확인
-//                     userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
-//                     let x = document.getElementsByClassName("button button--ghost")[0];
-//                     x.innerText=accounts;
-
-//                     // 현재 유저가 들고있는 계정(currentAccount)가 브라우저가 인식하는 계정(userAccount)와 다르다면
-//                     if (saveAddress !== userAddress) {
-//                         // 계정을 업데이트 해준다
-//                         saveAddress = userAddress;
-//                         // 새 계정에 대한 UI로 업데이트하기 위한 함수 호출 및 메시지 알림
-//                         let x = document.getElementsByClassName("button button--ghost")[0];
-//                         x.innerText=accounts;
-//                     }
-                }, 1000);     // 1초 마다 계정 확인
+                }, 1000);
 
             }
 
