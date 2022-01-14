@@ -34,7 +34,7 @@
             var saveAddress;
             var copyAddress = '...';
 
-            console.log("init 61");
+            console.log("init 63");
 
             initWeb3();
 
@@ -53,66 +53,38 @@
 
             async function chainConnect(){
 
-                if (window.ethereum) {
+                let x = document.getElementsByClassName("button button--ghost")[0];
 
-                    try {
+                if(x.innerText == 'Connect')
+                {
+                     if (window.ethereum) {
 
-                        userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                        let x = document.getElementsByClassName("button button--ghost")[0];
-                        x.innerText = String(userAddress).substr(0, 6)+copyAddress;
+                        try {
 
-                        repet();
+                            userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                            let x = document.getElementsByClassName("button button--ghost")[0];
+                            x.innerText = String(userAddress).substr(0, 6)+copyAddress;
 
-                    } catch (error) {
+                            repet();
 
-                        if (error.code === 4001) {
-                            // User rejected request
+                        } catch (error) {
+
+                            if (error.code === 4001) {
+                                // User rejected request
+                            }
+
+                            console.log("error code = "+error);
+
                         }
-
-                        console.log("error code = "+error);
 
                     }
 
+                    // Non-dapp browsers...
+                    else {
+                        alert("Please install meta mask.");
+                    }
+                    
                 }
-                // Non-dapp browsers...
-                else {
-                    alert("Please install meta mask.");
-                }
-
-//                 if (window.ethereum) {
-//                     try {
-
-//                         console.log("B window.ethereum.isConnected() = "+window.ethereum.isConnected());
-
-//                         if(!window.ethereum.isConnected()){
-//                            initWeb3();
-//                         }
-
-//                         else
-//                         {
-//                             console.log("F window.ethereum.isConnected() = "+window.ethereum.isConnected());
-                            
-//                             userAddress = await window.ethereum.request({ method: 'eth_requestAccounts' });
-//                             let x = document.getElementsByClassName("button button--ghost")[0];
-//                             x.innerText = userAddress;
-
-//                             repet();
-//                         }
-
-//                     } catch (error) {
-
-//                         if (error.code === 4001) {
-//                             // User rejected request
-//                         }
-
-//                         console.log("error code = "+error);
-
-//                     }
-//                 }
-//                 // Non-dapp browsers...
-//                 else {
-//                     alert("Please install meta mask.");
-//                 }
 
             }
 
